@@ -101,6 +101,27 @@ mutation questionOfContest($id_contest: String){
 }
 `
 
+const chooseAnswer = gql`
+mutation answer($id_contest: String!, $id_question: String!, $answer: Int!){
+  answer(input:{
+    id_contest: $id_contest
+    id_question: $id_question
+    answer: $answer
+  })
+}
+`
+const getContest = gql`
+mutation contest($id_contest: String){
+  contest(id_contest: $id_contest){
+    id
+    name
+    timeStart
+    started
+  }
+  
+}
+`
+
 export {
   loginMutation,
   user,
@@ -110,5 +131,7 @@ export {
   toggleUserToContest,
   toggleQuestionToContest,
   userOfContest,
-  questionOfContestMutation
+  questionOfContestMutation,
+  chooseAnswer,
+  getContest
 }

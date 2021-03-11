@@ -53,9 +53,36 @@ query {
 }
 `
 
+
+
+const listenQuestionGQL = gql`
+subscription listenContestStart($id_contest: String, $id_user: String){
+  listenContestStart(input: {
+    id_contest: $id_contest,
+    id_user: $id_user
+  }) {
+    time
+    question{ 
+    	id
+      question
+      answers
+      currentTime
+    }
+    type
+    time
+    answer {
+      id_question
+      answer
+    }
+  }
+}
+
+`
+
 export {
   contests,
   queryQuestionsGQL,
   getUsers,
-  getQuestions
+  getQuestions,
+  listenQuestionGQL,
 }

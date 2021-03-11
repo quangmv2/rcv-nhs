@@ -4,7 +4,7 @@ import { useGetUser } from "../util";
 import { useStore } from "../store";
 
 const Private = ({
-    children
+    MyComponent
 }: any) => {
 
     const { getUser, loading } = useGetUser()
@@ -35,7 +35,7 @@ const Private = ({
     return(
         <>
             { 
-                loading ? <p>Logging...</p>: children
+                loading ? <p>Logging...</p>: MyComponent && <MyComponent />
             }
         </>
     )

@@ -20,8 +20,9 @@
    border: 2px solid #2884da; 
     background-color: #231f20;
     width: 80%;
-    height: 150px;
+    height: 300px;
     color: blanchedalmond;
+    // text-align: center;
 }
 .question-number {
     position: relative;
@@ -39,6 +40,7 @@
    
     top: -35px;
     left: 43%;
+  text-align: left;
     
 
     
@@ -54,11 +56,21 @@
     align-items: center;
 }
 .each-answer-container {
-    background-color: #231f20;
+   border: 2px solid #000; 
+   background-color: #fff;
     width: 80%;
     height: 70px;
     margin-top: 30px;
     border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    
+    p{
+      color: #000;
+    }
+
 }
 .wrap {
     position: absolute;

@@ -24,7 +24,7 @@ const QuestionForm: FunctionComponent<Props> = ({
       } = values;
       const answers = _.concat(a, b, c, d);
       const input = {
-        question, answers, currentTime: time, answer
+        question, answers, currentTime: Number(time), answer: Number(answer)
       }
       console.log(input);
       create({ variables: input }).then(data => {

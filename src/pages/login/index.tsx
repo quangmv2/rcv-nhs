@@ -22,7 +22,7 @@ const Login = () => {
         if (!data) return;
         const access_token = data.login.access_token;
         localStorage.setItem("access_token", access_token);
-        history.push('/admin')
+        history.push('/')
     }, [data])
 
     useEffect(() => {

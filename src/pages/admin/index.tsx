@@ -94,7 +94,7 @@ const Admin = () => {
                             <Switch>
                                 {
                                     routerAdmin.map(r =>
-                                        <Route key={`${path}${r.path}`} exact path={`${path}${r.path}`} >
+                                        <Route key={`${path}${r.path}`} exact={r.exact} path={`${path}${r.path}`} >
                                             <r.component />
                                         </Route>
                                     )
