@@ -1,0 +1,32 @@
+.question-container {
+    background-color: #ccc;
+    width: 80%;
+    height: 200px;
+    
+    align-items: center;
+   .p {
+       text-align: center;
+   }
+}
+.each-answer-container {
+    background-color: #ccc;
+    width: 70%;
+    height: 150px;
+    margin-top: 30px;
+}
+.answer-contain {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+}
+.answer-container {
+   display: flex;
+   justify-content: space-evenly;
+
+    
+}
