@@ -7,18 +7,26 @@ import {
 import { useRouteMatch, Switch, Route, Link, useHistory } from 'react-router-dom';
 import { routerAdmin } from 'router/routers';
 import SubMenu from 'antd/lib/menu/SubMenu';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import "./index.css";
 import { useStore } from 'store';
+import * as _ from "lodash";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const Admin = () => {
 
-    const  { auth, setAuth } = useStore();
+    const  { auth, setAuth, init } = useStore();
     const history = useHistory()
 
     let { path, url } = useRouteMatch();
+
+    useEffect(() => {
+        // if (init) return;
+        // if (!auth || !auth.user) return;
+        // if (auth.user.idRole || _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) < 0) history.push('/login');
+    }, [auth])
+
     console.log(path, url);
 
     const logout = () => {

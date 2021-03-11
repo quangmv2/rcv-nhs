@@ -6,6 +6,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { useStore } from "../store";
 import { useGetUser } from "../util";
 import "./public.scss";
+import * as _ from "lodash";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -83,9 +84,12 @@ const PublicLayout = ({
                         <Menu.Item key="/dashboard">
                             <Link to="/dashboard">Dashboard</Link>
                         </Menu.Item>
-                        <Menu.Item key="/admin">
+                        {
+                            auth && auth.user && _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) > -1 &&
+                            <Menu.Item key="/admin">
                             <Link to="/admin">Admin</Link>
-                        </Menu.Item>
+                            </Menu.Item>
+                        }
                     </Menu>
                 </Sider>
                 <Layout style={{ padding: '0 24px 24px' }}>

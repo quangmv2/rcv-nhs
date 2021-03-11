@@ -35,6 +35,8 @@ query{
     firstname
     lastname
     email
+    dv
+    image
   }
 }
 `

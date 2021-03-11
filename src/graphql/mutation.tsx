@@ -19,6 +19,7 @@ const user = gql`
       firstname
       lastname
       email
+      idRole
     }
   }`
 
@@ -122,6 +123,23 @@ mutation contest($id_contest: String){
 }
 `
 
+const createUser = gql`
+mutation createUser($username: String!, $password: String!, $email: String!, $firstname: String!, $lastname: String!, $image: String, $dv: String!){
+  createUser(input: {
+    username: $username,
+  	password: $password,
+    email: $email,
+    firstname: $firstname,
+    lastname: $lastname,
+    image: $image,
+    dv: $dv
+  }) {
+    id
+    username
+  }
+}
+`
+
 export {
   loginMutation,
   user,
@@ -133,5 +151,6 @@ export {
   userOfContest,
   questionOfContestMutation,
   chooseAnswer,
-  getContest
+  getContest,
+  createUser
 }

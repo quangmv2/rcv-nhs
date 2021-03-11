@@ -3,11 +3,14 @@ import React, { createContext, FunctionComponent, useContext, useState } from "r
 
 type TypeAuth = {
     auth: any,
-    setAuth?: Function
+    setAuth?: Function,
+    init: boolean
+    setInit?: Function
 }
 
 const AuthContext = createContext<TypeAuth>({
-    auth: null
+    auth: null,
+    init: true
 });
 
 const AuthProvider: FunctionComponent = ({
@@ -15,11 +18,14 @@ const AuthProvider: FunctionComponent = ({
 }) => {
 
     const [auth, setAuth] = useState<TypeAuth>();
+    const [init, setInit] = useState<boolean>(true);
 
     return (
         <AuthContext.Provider value={{
             auth,
-            setAuth
+            setAuth,
+            init,
+            setInit
         }}>
             {children}
         </AuthContext.Provider>

@@ -8,7 +8,7 @@ const Private = ({
 }: any) => {
 
     const { getUser, loading } = useGetUser()
-    const { auth, setAuth } = useStore()
+    const { auth, setAuth, setInit } = useStore()
     const history = useHistory();
 
     useEffect(() => {
@@ -25,10 +25,13 @@ const Private = ({
         getUser().then(data => {
             console.log(data);
             setAuth && setAuth(data)
+            setInit && setInit(false)
         }).catch(err => {
             console.log(err);
             history.push('/login');
+            setInit && setInit(false)
         })
+
     }
 
 

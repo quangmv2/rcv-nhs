@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import Question from "./question";
-import { Table, Row, Col, } from 'antd';
+import { Table, Row, Col, message, } from 'antd';
 import './contest.scss';
 import Answer from "./answer";
 import Counter from "./counter";
@@ -16,7 +16,8 @@ export enum EnumListenContest {
     ANSWER = "ANSWER",
     WAITTING_QUESTION = "WAITTING_QUESTION",
     QUESTION = "QUESTION",
-    END = "END"
+    END = "END",
+    STOP = "STOP"
 }
 
 // const id_contest = "604a1c78ec728268e54eaf79";
@@ -24,7 +25,7 @@ export enum EnumListenContest {
 const Home = () => {
 
     const { id }: any = useParams();
-    const { data } = useListenQuestion(id, "");
+    const { data } = useListenQuestion("id", "");
     const [question, setQuestion] = useState<any>()
     const [time, setTime] = useState<number>(0);
     const [waittingNext, setWaittingNext] = useState<boolean>(false);
@@ -69,6 +70,9 @@ const Home = () => {
                 setAnswer(null);
                 setMyChoose(null);
                 setWaittingNext(false);
+                break;
+            case EnumListenContest.STOP:
+                message.warn("Stop")
                 break;
             default:
                 break;
