@@ -1,0 +1,23 @@
+.header {
+    flex-direction: row;
+    display: flex;
+    height: 64px;
+    width: 100vw;
+    background: black;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-header {
+
+}
+
+.ant-menu-item.ant-menu-item-only-child{
+    height: 64px;
+    /* display: flex; */
+    justify-content: center;
+}
+
+.ant-layout {
+    height: 100%;
+}

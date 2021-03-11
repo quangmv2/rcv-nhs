@@ -1,39 +1,90 @@
-import React, { memo } from "react";
-import { Table, Row, Col,} from 'antd';
+import React, { memo, useEffect, useState } from "react";
+import { Table, Row, Col, } from 'antd';
 import QuestionForm from "./questionForm";
+import { useQuery } from "@apollo/client";
+import { queryQuestionsGQL } from "../../../graphql";
+import More from "./More";
+
+const columns = [
+  {
+    title: 'STT',
+    dataIndex: 'index',
+    key: 'index',
+  },
+  {
+    title: 'Question',
+    dataIndex: 'question',
+    key: 'question',
+  },
+  {
+    title: 'Answer',
+    dataIndex: 'answer',
+    key: 'answer',
+  },
+  {
+    title: 'Current Time',
+    dataIndex: 'currentTime',
+    key: 'currentTime',
+  },
+  {
+    title: '',
+    dataIndex: 'id',
+    key: 'x',
+    render: (id: any) => <>
+      <More id={id}></More>
+    </>,
+  }
+];
+
+export const renderAnswer = (a: any) => {
+  let t = '';
+  switch (a) {
+    case 1:
+      return 'A'
+      break;
+    case 2:
+      return 'B'
+      break;
+    case 3:
+      return 'C'
+      break;
+    default:
+      break;
+  }
+  return "D";
+}
 
 const Questions = () => {
-    const columns = [
-        {
-          title: 'Question',
-          dataIndex: 'question',
-          key: 'question',
-        },
-        {
-          title: 'Answers',
-          dataIndex: 'answers',
-          key: 'answer',
-        },
-        {
-          title: 'Answer',
-          dataIndex: 'answer',
-          key: 'answer',
-        },
-        {
-            title: 'Current Time',
-            dataIndex: 'current time',
-            key: 'current',
-          },
-        
-      ];
-    return(
-        <Row >
-             <Col xs={{ span: 18 }} lg={{ span: 16}} md={{ span: 24 }}> <Table columns={columns} /></Col>
-             <Col xs={{ span: 6 }} lg={{ span: 8}} md={{ span: 24 }}>  <QuestionForm /></Col>
-            
-       
-        </Row>
-    )
+
+  const { data, loading, refetch } = useQuery(queryQuestionsGQL);
+  const [dataQuestions, setDataQuestions] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!data) return;
+    console.log(data);
+    let { queryQuestions } = data;
+    queryQuestions = queryQuestions.map((q: any, index: number) => {
+      return {
+        ...q,
+        answer: renderAnswer(q.answer),
+        index: index + 1
+      }
+    })
+    setDataQuestions(queryQuestions)
+  }, [data])
+
+  return (
+    <Row >
+      <Col xs={{ span: 18 }} lg={{ span: 16 }} md={{ span: 24 }}>
+        <Table columns={columns} loading={loading} dataSource={dataQuestions} />
+      </Col>
+      <Col xs={{ span: 6 }} lg={{ span: 8 }} md={{ span: 24 }}>
+        <QuestionForm refetch={refetch} />
+      </Col>
+
+    <More id="mmm"/>
+    </Row>
+  )
 }
 
 export default memo(Questions);

@@ -7,6 +7,6 @@ justify-content: space-evenly;
 .form-container {
     margin-left: 30px;
 }
-.ant-table-pagination.ant-pagination {
+/* .ant-table-pagination.ant-pagination {
     display: none;
-}
+} */

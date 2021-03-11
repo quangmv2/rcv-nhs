@@ -14,7 +14,7 @@ const tailLayout = {
 };
 const Login = () => {
 
-    const { login, data } = useLogin()
+    const { login, data, error } = useLogin()
     const history = useHistory()
 
     useEffect(() => {
@@ -24,14 +24,17 @@ const Login = () => {
         localStorage.setItem("access_token", access_token);
         history.push('/admin')
     }, [data])
-    
+
+    useEffect(() => {
+        if (error) alert('Login failed')
+    }, [error])
+
 
     const onFinish = (values: any) => {
         console.log('Success:', values);
         try {
             login(values.username, values.password);
         } catch (error) {
-            
         }
     };
 
@@ -63,15 +66,10 @@ const Login = () => {
                 >
                     <Input.Password />
                 </Form.Item>
-
-                <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
                 <Form.Item {...tailLayout}>
                     <Button type="primary" htmlType="submit">
                         Submit
-        </Button>
+                </Button>
                 </Form.Item>
             </Form>
         </div>

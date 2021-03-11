@@ -31,11 +31,11 @@ const routerAuth: any[] = [
 ]
 
 const routerAdmin = [
-    // {
-    //     path: '/',
-    //     exact: true,
-    //     component: lazy(() => import('../pages/admin/users'))
-    // },
+    {
+        path: '/',
+        exact: true,
+        component: lazy(() => import('../pages/admin/contest'))
+    },
     {
         path: '/contest',
         exact: false,
