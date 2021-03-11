@@ -1,0 +1,12 @@
+.user-container {
+    display: flex;
+    flex-direction: row;
+justify-content: space-evenly;
+    align-items: center;
+}
+.form-container {
+    margin-left: 30px;
+}
+.ant-table-pagination.ant-pagination {
+    display: none;
+}

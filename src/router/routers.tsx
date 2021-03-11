@@ -15,6 +15,11 @@ const routerNoAuth = [
         exact: false,
         component: lazy(() => import('../pages/dashboard'))
     },
+    {
+        path: '/contest',
+        exact: false,
+        component: lazy(() => import('../pages/contest'))
+    },
 ]
 
 const routerAuth: any[] = [
