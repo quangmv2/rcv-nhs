@@ -6,9 +6,9 @@ const Public = (props: any) => {
     const { auth } = useStore()
 
     return(
-        <div>
+        <>
             {props.children}
-        </div>
+        </>
     )
 }
 
