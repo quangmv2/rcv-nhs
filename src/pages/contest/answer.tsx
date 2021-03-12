@@ -21,6 +21,11 @@ const styleCorrect = {
     backgroundColor: "green"
 }
 
+const styleInCorrect = {
+    border: "2px solid red",
+    backgroundColor: "red"
+}
+
 // const Answer: FunctionComponent<Props> = ({
 //     answers,
 //     answering,
@@ -97,7 +102,8 @@ const Answer: FunctionComponent<Props> = ({
                 <Col span={12} className='answer-contain'>
                     <div className='each-answer-container'
                         onClick={() => setChoose(index + 1)}
-                        style={correct == index +1 ? styleCorrect : (answering == index + 1 ? styleChoose : {})}
+                        style={correct == index + 1 ? styleCorrect :
+                            (answering == index + 1 && correct && answering && correct != answering ? styleInCorrect : (answering == index + 1 ? styleChoose : {}))}
                     >
                         <div>
                             <span >{renderIndex(index)}</span>

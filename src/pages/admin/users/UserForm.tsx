@@ -5,7 +5,7 @@ import axios from "axios";
 import { useMutation } from "@apollo/client";
 import { createUser } from "../../../graphql";
 
-export const HOST = 'http://35.185.183.223'
+export const HOST = '/'
 
 const { Option } = Select
 
@@ -125,6 +125,7 @@ const UserForm = ({
         <Select style={{ width: "100%" }} >
           <Option value="pkm">Phường Khuê Mỹ</Option>
           <Option value="phh">Phường Hòa Hải</Option>
+          <Option value="phq">Phường Hòa Qúy</Option>
           <Option value="pma">Phường Mỹ An</Option>
           <Option value="tvcc">Trường Võ Chí Công</Option>
           <Option value="tnhs">Trường Ngũ Hành Sơn</Option>

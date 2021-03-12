@@ -51,7 +51,7 @@ const Home = () => {
         })
     }
     return (
-        <>
+        <div className={auth && auth.user ? "" : "container-home"}>
             {
                 auth && auth.user ? <Row>
                     <Col span={6}>
@@ -138,10 +138,10 @@ const Home = () => {
                                     fontSize: "50px",
                                     fontWeight: "bold"
                                 }}
-                    >Welcome</h1>
+                    ></h1>
             }
 
-        </>
+        </div>
     )
 }
 

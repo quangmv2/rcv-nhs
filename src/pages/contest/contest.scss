@@ -1,9 +1,11 @@
-.container {
+.container-contest{
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: center;
   padding: 20px;
+  background-image: url('../home/quandoan.png');
+  background-repeat: round;
 }
 .question-container {
   margin: 0;
@@ -18,6 +20,7 @@
    font-size: x-large;
    font-weight: bold;
    padding-top: 30px;
+   user-select: none;
    >span {
        
       
@@ -33,7 +36,7 @@ width: 80%;
 text-align: center;
 background-color: #3186b4;
 border-radius: 20px;
-height: 200px;
+height: 300px;
 
 >span {
    
@@ -95,7 +98,7 @@ height: 200px;
 .each-answer-container {
   background-color: #3186b4;
   width: 80%;
-  height: 70px;
+  height: 150px;
   border-radius: 20px;
   display: flex;
   flex-direction: row;

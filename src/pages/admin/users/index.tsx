@@ -23,6 +23,8 @@ export const revertDV = (dv: any) => {
             return "Trường Hermann Gmeiner"
         case "tf":
             return "Trường FPT"
+        case "phq": 
+            return "Phường Hòa Qúy"
         default:
             return "Tự do"
     }
