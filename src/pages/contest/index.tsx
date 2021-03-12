@@ -10,6 +10,9 @@ import { chooseAnswer, getContest, questionOfContestMutation } from "../../graph
 import { useStore } from "../../store";
 import Countdown from "antd/lib/statistic/Countdown";
 import { useParams } from "react-router-dom";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import { renderAnswer } from "pages/admin/questions";
+
 
 export enum EnumListenContest {
     NEXT = "NEXT",
@@ -25,7 +28,7 @@ export enum EnumListenContest {
 const Home = () => {
 
     const { id }: any = useParams();
-    const { data } = useListenQuestion("id", "");
+    const { data } = useListenQuestion(id, "");
     const [question, setQuestion] = useState<any>()
     const [time, setTime] = useState<number>(0);
     const [waittingNext, setWaittingNext] = useState<boolean>(false);
@@ -35,6 +38,7 @@ const Home = () => {
     const { auth } = useStore();
     const [fetchContest, { data: dbContest }] = useMutation(getContest);
     const [countDown, setCountDown] = useState<number>(0);
+    const [total, setTotal] = useState<any[]>([0, 0])
 
     useEffect(() => {
         if (!dbContest || !dbContest.contest) return;
@@ -47,7 +51,7 @@ const Home = () => {
             variables: {
                 id_contest: id
             }
-        })
+        }).catch(err => console.log(err))
     }, [id]);
 
     useEffect(() => {
@@ -57,6 +61,7 @@ const Home = () => {
         switch (listenContestStart.type) {
             case EnumListenContest.QUESTION:
                 questionHandler(listenContestStart)
+                // setTotal([listenContestStart.doing, listenContestStart.total])
                 setWaittingNext(false)
                 break;
             case EnumListenContest.WAITTING_QUESTION:
@@ -70,9 +75,12 @@ const Home = () => {
                 setAnswer(null);
                 setMyChoose(null);
                 setWaittingNext(false);
+                const { total, doing } = listenContestStart;
+                setTotal([doing, total])
+                message.success(`Câu số ${doing}`)
                 break;
-            case EnumListenContest.STOP:
-                message.warn("Stop")
+            case EnumListenContest.END:
+                message.success("Cuộc thi đã kết thúc. Mời bạn xem kết quả tại trang chính")
                 break;
             default:
                 break;
@@ -89,6 +97,7 @@ const Home = () => {
     const answerHandler = (listenContestStart: any) => {
         const { answer } = listenContestStart;
         setAnswer(answer.answer);
+        message.success(`Câu trả lời đúng ${renderAnswer(answer.answer)}`)
         // console.log(time);
     }
 
@@ -105,14 +114,15 @@ const Home = () => {
         }).then(data => {
             console.log(data);
             if (data.data.answer != -1) setMyChoose(data.data.answer);
-        }).catch(err => console.log(err))
+            else message.warning("Bạn không có quyền truy cập")
+        }).catch(err => message.warning("Bạn không có quyền truy cập"))
     }
 
     return (
         <Row>
             <Col span={20}> <div className='container'>
                 <Countdown value={countDown} />
-                <Question question={question} />
+                <Question total={total} question={question} />
                 <Answer
                     answers={question ? question.answers : null}
                     correct={answer}

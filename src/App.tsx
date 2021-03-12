@@ -10,6 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 import { split, HttpLink } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 
 // const httpLink = createHttpLink({
@@ -31,11 +32,11 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: '/graphql'
+  uri: 'http://localhost:4200/graphql'
 });
 
 const wsLink = new WebSocketLink({
-  uri: '/graphql',
+  uri: 'ws://localhost:4200/graphql',
   options: {
     reconnect: true,
     connectionParams: () => ({
@@ -75,6 +76,7 @@ function App() {
     <ApolloProvider client={client}>
       <AuthProvider>
         <RouterRoot />
+        <NotificationContainer />
       </AuthProvider>
     </ApolloProvider>
   );

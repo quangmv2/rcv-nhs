@@ -1,11 +1,11 @@
 import React, { memo, useState } from "react";
-import { Form, Input, Button, Radio, Upload, Select } from 'antd';
+import { Form, Input, Button, Radio, Upload, Select, message } from 'antd';
 import { InfoCircleOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import axios from "axios";
 import { useMutation } from "@apollo/client";
 import { createUser } from "../../../graphql";
 
-export const HOST = ''
+export const HOST = 'http://localhost:4200'
 
 const { Option } = Select
 
@@ -33,10 +33,21 @@ const UserForm = ({
   }
 
   const onFinish = (values: any) => {
-    console.log(values);
     create({
-      variables: values
+      variables: {
+        ...values,
+        image
+      }
     }).catch(err => console.log(err)).then(() => {
+      message.warn('error')
+      refetch && refetch()
+    }).then((d: any) => {
+      console.log(d);
+      if (d) {
+        message.success("success")
+      } else {
+        message.warn('error')
+      }
       refetch && refetch()
     })
   }

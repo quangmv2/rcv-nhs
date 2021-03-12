@@ -24,7 +24,9 @@ const Admin = () => {
     useEffect(() => {
         // if (init) return;
         // if (!auth || !auth.user) return;
-        // if (auth.user.idRole || _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) < 0) history.push('/login');
+        console.log(11, _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) < 0);
+        
+        if (auth.user.idRole && _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) < 0) history.push('/login');
     }, [auth])
 
     console.log(path, url);

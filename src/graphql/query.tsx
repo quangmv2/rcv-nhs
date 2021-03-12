@@ -72,6 +72,8 @@ subscription listenContestStart($id_contest: String, $id_user: String){
     }
     type
     time
+    total
+    doing
     answer {
       id_question
       answer

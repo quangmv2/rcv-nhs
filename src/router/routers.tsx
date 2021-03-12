@@ -2,7 +2,7 @@ import { lazy } from "react"
 const routerNoAuth = [
     {
         path: '/',
-        component: lazy(() => import('../pages/dashboard')),
+        component: lazy(() => import('../pages/home')),
         isAuth: false,
         exact: true
     },

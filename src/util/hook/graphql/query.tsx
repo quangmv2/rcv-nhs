@@ -16,8 +16,8 @@ const useListenQuestion = (id_contest: string, id_user?: string) => {
         // skip: true,
         onSubscriptionComplete: () => {
             console.log("Sub ok");
-            
-        }
+        },
+        
 
     });
     return {

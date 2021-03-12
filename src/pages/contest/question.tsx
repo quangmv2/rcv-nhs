@@ -2,11 +2,13 @@ import React, { FunctionComponent, memo } from "react";
 import "./contest.scss";
 
 type Props = {
-    question: any
+    question: any,
+    total: any
 }
 
 const Question: FunctionComponent<Props> = ({
-    question
+    question,
+    total
 }) => {
     return (
 
@@ -19,7 +21,7 @@ const Question: FunctionComponent<Props> = ({
                         marginLeft: "20px"
                     }}
                 >{ question ? question.question : "Waitting..." }</p>
-                <p className="question-number">Question 1/10</p>
+                <p className="question-number">Question {total[0]}/{total[1]}</p>
             </div>
             {/* <Counter /> */}
         </div>
