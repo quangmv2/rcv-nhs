@@ -4,16 +4,14 @@ import "./contest.scss";
 
 const Question = (props: { question: string }) => {
     return (
-
         <div className='question-container'>
-            <div className='question-content'>
-                <p>{props.question}</p>
-                <p className="question-number">Question 1/10</p>
+            <div className="question">
+                <h3 className="question-number">
+                    Question 1/10
+                 </h3>
+                <div className='question-content'>  <p></p></div>
             </div>
-            {/* <Counter /> */}
         </div>
-
-
     )
 }
 
