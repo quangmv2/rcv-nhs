@@ -10,15 +10,14 @@ const Home = () => {
     return (
         <Row>
             <Col span={20}> <div className='container'>
-                <div className='counter-container'>
-                <Counter />
-            </div>
+                
                 <Question question='hello' />
                 <Answer />
             </div>  </Col>
             <Col span={4} className='counter'>
             <RightCircleOutlined />
-                <span>Nga</span>
+                <span>Hello, Nga</span>
+                <Counter />
                 </Col>
 
         </Row>

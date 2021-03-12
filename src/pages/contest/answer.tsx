@@ -6,25 +6,25 @@ import _ from "lodash";
 
 const Answer = () => {
     const renderRank = () => {
-        return _.map(Data, ({ index, ans}
-            ) => {
-         
+        return _.map(Data, ({ index, ans }
+        ) => {
+
             return (
                 <Col span={12} className='answer-contain'>
-                <div className='each-answer-container'> 
-                <div>
-                <span >{index}</span>
-                </div>
-                <p>ans</p>
-                </div>
-            </Col>
+                    <div className='each-answer-container'>
+                        <div>
+                            <span >{index}</span>
+                        </div>
+                        <p>ans</p>
+                    </div>
+                </Col>
 
             );
         });
     }
     return (
         <Row className='answer-container'>
-           { renderRank() }
+            { renderRank()}
         </Row>
 
     )

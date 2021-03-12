@@ -10,7 +10,9 @@ const Question = (props: { question: string }) => {
                 <h3 className="question-number">
                     Question 1/10
                  </h3>
-                <div className='question-content'><span>QUESTION</span></div>
+                <div className='question-content'>
+                    
+                    <span>QUESTION</span></div>
             </div>
         </div>
 

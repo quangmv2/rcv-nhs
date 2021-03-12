@@ -57,29 +57,9 @@
     text-transform: uppercase;
 
 }
-.plan-title {
-    position: relative;
-    top: 0;
-    font-weight: 800;
-    padding: 5px 15px;
-    margin: 0 auto;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    margin: 0;
-    display: inline-block;
-    background-color: #222f3d;
-    color: #ffffff;
-    text-transform: uppercase;
-  }
 
-.plan {
-    margin: 0;
-    width: 25%;
-    position: relative;
-    float: left;
-    background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  } 
+
+ 
 
 .answer-container {
     flex-grow: 2;
@@ -185,11 +165,14 @@ h2 {
 }
 .counter {
     margin-top: 160px;
-    >p {
+    >span{
         color: #040f2b;
         font-weight: bold;
+        font-size: 20px;
+        padding-left: 5px;
     }
 }
+
 .number {
     color: #fff;
     font-weight: bold;
