@@ -52,23 +52,22 @@ const Login = () => {
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
-                    label="Username"
+                    label="Tên đăng nhập"
                     name="username"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input />
+                    <Input placeholder="Tên đăng nhập" />
                 </Form.Item>
-
                 <Form.Item
-                    label="Password"
+                    label="Mật khẩu"
                     name="password"
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
-                    <Input.Password />
+                    <Input.Password placeholder="Mật khẩu" />
                 </Form.Item>
                 <Form.Item {...tailLayout}>
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        Đăng nhập
                 </Button>
                 </Form.Item>
             </Form>

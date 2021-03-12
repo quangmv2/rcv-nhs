@@ -22,7 +22,7 @@ const Counter: FunctionComponent<Props> = ({
             <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
                 <span className='number'>{time}</span>
             </Animated>
-            <p>SECONDS</p>
+            <p>GIÂY</p>
         </div>
 
 

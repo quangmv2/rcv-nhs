@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { ExclamationCircleOutlined, UserOutlined } from "@ant-design/icons";
-import { Dropdown, Menu, message, Table, Modal } from "antd";
+import { Dropdown, Menu, message, Table, Modal, Button } from "antd";
 import { useMutation, useQuery } from "@apollo/client";
-import { getUsers, removeContestGQL, toggleUserToContest, userOfContest } from "../../../graphql";
+import { getUsers, removeContestGQL, toggleUserToContest, userOfContest, duplicateGQL } from "../../../graphql";
 import Checkbox from "antd/lib/checkbox/Checkbox";
 import * as _ from "lodash";
 import Question from "./question";
@@ -93,6 +93,8 @@ const More: FunctionComponent<Props> = ({
     const [visible, setVisible] = useState(false);
     const [visibleQuestion, setVisibleQuestion] = useState<boolean | null>(null);
     const [dataTable, setDataTable] = useState<any[]>([]);
+    const [toggleServer] = useMutation(toggleUserToContest)
+    const [dup] = useMutation(duplicateGQL)
 
     useEffect(() => {
         if (!users || !data) return;
@@ -146,6 +148,33 @@ const More: FunctionComponent<Props> = ({
         // })
     }
 
+    const clickAll = () => {
+        dataTable.forEach((d: any) => {
+            if (!d.checked) {
+                setTimeout(() => {
+                    toggleServer({
+                        variables: { id_contest: id, id_user: d.id }
+                    }).catch(e => {
+                        console.log(e);
+                        
+                    })
+                }, 10)
+            }
+        })
+    }
+
+    const duplicate = () => {
+        dup({
+            variables: {
+                id_contest: id
+            }
+        }).then(() =>{
+            refetch();
+        }).catch((err) =>{
+            console.log(err);
+        })
+    }
+
     const menu = (
         <Menu>
             <Menu.Item key="1" icon={<UserOutlined />}
@@ -157,6 +186,11 @@ const More: FunctionComponent<Props> = ({
                 onClick={openEditUser}
             >
                 Edit User
+            </Menu.Item>
+            <Menu.Item key="2" icon={<UserOutlined />}
+                onClick={duplicate}
+            >
+                Duplicate
             </Menu.Item>
             <Menu.Item key="3" icon={<UserOutlined />} style={{
                 color: "red"
@@ -180,6 +214,7 @@ const More: FunctionComponent<Props> = ({
                 onCancel={() => setVisible(false)}
                 width={1000}
             >
+                <Button type="primary" onClick={clickAll}>Chọn tất cả</Button>
                 <Table columns={columns} dataSource={dataTable} />
             </Modal>
             <Question 

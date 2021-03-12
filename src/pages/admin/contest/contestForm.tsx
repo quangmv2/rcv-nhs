@@ -5,6 +5,8 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import "../users/users.css";
 import moment from "moment";
 import { useCreateContest } from "../../../util";
+import { useMutation } from "@apollo/client";
+import { updateContestGQL } from "../../../graphql";
 
 type Props = {
     refetch: Function,
@@ -19,7 +21,8 @@ const ContestForm: FunctionComponent<Props> = ({
 }) => {
 
     const [form] = Form.useForm();
-    const { createContest, data, error, loading } = useCreateContest()
+    const { createContest, data, error, loading } = useCreateContest();
+    const [update] = useMutation(updateContestGQL)
 
     useEffect(() => {
         console.log(data);
@@ -43,6 +46,18 @@ const ContestForm: FunctionComponent<Props> = ({
         console.log(timeStart);
 
         timeStart = timeStart.toDate().getTime()
+        if (edit) {
+            update({
+                variables: {
+                    id: edit.id,
+                    name, 
+                    timeStart
+                }
+            }).then(t => {
+                console.log(11);
+                refetch()
+            })
+        } else
         createContest({
             name, timeStart
         }).then(t => {

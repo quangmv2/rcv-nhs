@@ -4,37 +4,8 @@ import QuestionForm from "./questionForm";
 import { useQuery } from "@apollo/client";
 import { queryQuestionsGQL } from "../../../graphql";
 import More from "./More";
+import question from "pages/contest/question";
 
-const columns = [
-  {
-    title: 'STT',
-    dataIndex: 'index',
-    key: 'index',
-  },
-  {
-    title: 'Question',
-    dataIndex: 'question',
-    key: 'question',
-  },
-  {
-    title: 'Answer',
-    dataIndex: 'answer',
-    key: 'answer',
-  },
-  {
-    title: 'Current Time',
-    dataIndex: 'currentTime',
-    key: 'currentTime',
-  },
-  {
-    title: '',
-    dataIndex: 'id',
-    key: 'x',
-    render: (id: any) => <>
-      <More id={id}></More>
-    </>,
-  }
-];
 
 export const renderAnswer = (a: any) => {
   let t = '';
@@ -73,6 +44,38 @@ const Questions = () => {
     setDataQuestions(queryQuestions)
   }, [data])
 
+
+const columns = [
+  {
+    title: 'STT',
+    dataIndex: 'index',
+    key: 'index',
+  },
+  {
+    title: 'Question',
+    dataIndex: 'question',
+    key: 'question',
+  },
+  {
+    title: 'Answer',
+    dataIndex: 'answer',
+    key: 'answer',
+  },
+  {
+    title: 'Current Time',
+    dataIndex: 'currentTime',
+    key: 'currentTime',
+  },
+  {
+    title: '',
+    dataIndex: '',
+    key: 'x',
+    render: (value: any) => <>
+      <More id={value.id} question={value} refetch={refetch}></More>
+    </>,
+  }
+];
+
   return (
     <Row >
       <Col xs={{ span: 18 }} lg={{ span: 16 }} md={{ span: 24 }}>
@@ -81,8 +84,7 @@ const Questions = () => {
       <Col xs={{ span: 6 }} lg={{ span: 8 }} md={{ span: 24 }}>
         <QuestionForm refetch={refetch} />
       </Col>
-
-    <More id="mmm"/>
+    {/* <More id="mmm"/> */}
     </Row>
   )
 }

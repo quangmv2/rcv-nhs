@@ -41,16 +41,20 @@ const PublicLayout = ({
 
     return (
         <Layout>
-            <Header className="header">
+            {/* <Header className="header">
                 <div className="logo" />
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                     <Menu.Item key="1">nav 1</Menu.Item>
                     <Menu.Item key="2">nav 2</Menu.Item>
                     <Menu.Item key="3">nav 3</Menu.Item>
                 </Menu>
-            </Header>
+            </Header> */}
             <Layout>
-                <Sider width={200} className="site-layout-background">
+                <Sider width={200} 
+                style={{
+                    paddingTop: "50px"
+                }} 
+                className="site-layout-background">
                     <Menu
                         mode="inline"
                         defaultSelectedKeys={[location.pathname]}
@@ -58,11 +62,20 @@ const PublicLayout = ({
                         style={{ height: '100%', borderRight: 0 }}
                     >
                         <Menu.Item key="/" >
-                            <Link to="/">Home</Link>
+                            <Link to="/">Trang chủ</Link>
                         </Menu.Item>
                         <Menu.Item key="/contests" isSelected={true}>
-                            <Link to="/contests" >Contests</Link>
+                            <Link to="/contests" >Cuộc thi</Link>
                         </Menu.Item>
+                        <Menu.Item key="/dashboards">
+                            <Link to="/dashboards">Kết quả</Link>
+                        </Menu.Item>
+                        {
+                            auth && auth.user && _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) > -1 &&
+                            <Menu.Item key="/admin">
+                            <Link to="/admin">Quản trị</Link>
+                            </Menu.Item>
+                        }
                         {
                             auth && auth.user ? (
                                 <SubMenu title={`${auth.user.firstname} ${auth.user.lastname}`}>
@@ -70,25 +83,15 @@ const PublicLayout = ({
                                         setAuth && setAuth(null)
                                         localStorage.removeItem("access_token")
                                     }}>
-                                            Logout
+                                            Đăng xuất
                                     </Menu.Item>
                                 </SubMenu>
 
                             ) : (
                                     <Menu.Item key="/login">
-                                        <Link to="/login">Login</Link>
+                                        <Link to="/login">Đăng nhập</Link>
                                     </Menu.Item>
                                 )
-                        }
-
-                        <Menu.Item key="/dashboards">
-                            <Link to="/dashboards">Dashboard</Link>
-                        </Menu.Item>
-                        {
-                            auth && auth.user && _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) > -1 &&
-                            <Menu.Item key="/admin">
-                            <Link to="/admin">Admin</Link>
-                            </Menu.Item>
                         }
                     </Menu>
                 </Sider>

@@ -172,6 +172,33 @@ mutation removeUser($input: String){
   }
 }
 `
+const duplicateGQL = gql`
+mutation duplicateContest($id_contest: String){
+  duplicateContest(id_contest: $id_contest){
+    id
+  }
+}
+`
+
+const updateContestGQL = gql`
+mutation updateContest($id: String, $name: String, $timeStart: Float){
+  updateContest(input: {
+    id: $id
+    name: $name
+    timeStart: $timeStart
+  }) {
+    id
+  }
+}
+`
+
+const removeQuestionGQL = gql`
+mutation removeQuestion($input: String){
+  removeQuestion(input: $input){
+    id
+  }
+}
+`
 
 export {
   loginMutation,
@@ -188,5 +215,8 @@ export {
   createUser,
   changePasswordGQL,
   resultGQL,
-  removeUser
+  removeUser,
+  duplicateGQL,
+  updateContestGQL,
+  removeQuestionGQL
 }

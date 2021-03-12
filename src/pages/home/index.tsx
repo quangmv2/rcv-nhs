@@ -132,7 +132,13 @@ const Home = () => {
                         </Form>
                     </Col>
                 </Row>
-                    : <h1>Welcome</h1>
+                    : <h1
+                                style={{
+                                    textAlign: "center",
+                                    fontSize: "50px",
+                                    fontWeight: "bold"
+                                }}
+                    >Welcome</h1>
             }
 
         </>
