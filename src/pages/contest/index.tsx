@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { renderAnswer } from "pages/admin/questions";
 
+import { RightCircleOutlined } from '@ant-design/icons';
 
 export enum EnumListenContest {
     NEXT = "NEXT",
@@ -129,11 +130,17 @@ const Home = () => {
                     answering={myChoose}
                     setChoose={chosse}
                 />
-            </div>  </Col>
-            <Col span={4} className='counter'><Counter
-                time={time}
-            /></Col>
-
+            </div>
+            </Col>
+            <Col span={4} className='counter'>
+                <RightCircleOutlined />
+                {
+                    auth && auth.user && <span>{auth.user.firstname} {auth.user.lastname}</span>
+                }
+                <Counter
+                    time={time}
+                />
+            </Col>
         </Row>
     )
 }

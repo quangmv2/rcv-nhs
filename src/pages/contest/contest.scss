@@ -184,8 +184,15 @@ h2 {
   ;
 }
 .counter {
-  margin-top: 160px;
+    margin-top: 160px;
+    >span{
+        color: #040f2b;
+        font-weight: bold;
+        font-size: 20px;
+        padding-left: 5px;
+    }
 }
+
 .number {
   color: #fff;
   font-weight: bold;

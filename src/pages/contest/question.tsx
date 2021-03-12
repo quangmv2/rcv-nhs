@@ -25,7 +25,7 @@ const Question: FunctionComponent<Props> = ({
             <div className="question">
                 <h3 className="question-number">
                     Question {total[0]}/{total[1]}
-                 </h3>
+                </h3>
                 <div className='question-content'><span>{question?.question}</span></div>
             </div>
         </div>

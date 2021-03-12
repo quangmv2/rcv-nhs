@@ -93,8 +93,6 @@ const Answer: FunctionComponent<Props> = ({
     const renderRank = () => {
         if (!answers) return;
         return answers.map((ans, index) => {
-            console.log(index, ans);
-
             return (
                 <Col span={12} className='answer-contain'>
                     <div className='each-answer-container'
