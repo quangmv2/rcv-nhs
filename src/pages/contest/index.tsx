@@ -130,7 +130,10 @@ const Home = () => {
                     setChoose={chosse}
                 />
             </div>  </Col>
-            <Col span={4}><Counter time={time} /></Col>
+            <Col span={4} className='counter'><Counter
+                time={time}
+            /></Col>
+
         </Row>
     )
 }
