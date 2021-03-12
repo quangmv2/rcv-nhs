@@ -13,7 +13,13 @@ const routerNoAuth = [
         component: lazy(() => import('../pages/login'))
     },
     {
-        path: '/dashboard',
+        path: '/dashboards',
+        exact: false,
+        isAuth: false,
+        component: lazy(() => import('../pages/dashboard/getcontest'))
+    },
+    {
+        path: '/dashboard/:id',
         exact: false,
         isAuth: false,
         component: lazy(() => import('../pages/dashboard'))

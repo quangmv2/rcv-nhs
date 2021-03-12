@@ -12,11 +12,13 @@ type Props = {
 }
 
 const styleChoose = {
-    border: " 2px solid #2884da"
+    border: " 2px solid #2884da",
+    backgroundColor: "yellow"
 }
 
 const styleCorrect = {
-    border: "2px solid green"
+    border: "2px solid green",
+    backgroundColor: "green"
 }
 
 // const Answer: FunctionComponent<Props> = ({
@@ -64,23 +66,45 @@ const styleCorrect = {
 //                 <p>
 //                     {answers && answers[3]}
 //                 </p>
+
+const renderIndex = (index: number) => {
+    switch (index + 1) {
+        case 1:
+            return "A"
+        case 2:
+            return "B"
+        case 3:
+            return "C"
+        default:
+            return "D"
+    }
+}
+
 const Answer: FunctionComponent<Props> = ({
     answers,
     answering,
     correct,
     setChoose
 }) => {
+
+
+    console.log(answers);
+
     const renderRank = () => {
-        return _.map(Data, ({ index, ans }
-        ) => {
+        if (!answers) return;
+        return answers.map((ans, index) => {
+            console.log(index, ans);
 
             return (
                 <Col span={12} className='answer-contain'>
-                    <div className='each-answer-container'>
+                    <div className='each-answer-container'
+                        onClick={() => setChoose(index + 1)}
+                        style={correct == index +1 ? styleCorrect : (answering == index + 1 ? styleChoose : {})}
+                    >
                         <div>
-                            <span >{index}</span>
+                            <span >{renderIndex(index)}</span>
                         </div>
-                        <p>ans</p>
+                        <p>{ans}</p>
                     </div>
                 </Col>
 

@@ -80,8 +80,24 @@ subscription listenContestStart($id_contest: String, $id_user: String){
     }
   }
 }
-
 `
+
+const listenResult = gql`
+subscription listenResult($id_contest: String){
+  listenResult(id_contest: $id_contest) {
+    user {
+      id
+      username
+      firstname
+      dv
+      image
+    }
+    correct
+    reject
+  }
+}
+`
+
 
 export {
   contests,
@@ -89,4 +105,5 @@ export {
   getUsers,
   getQuestions,
   listenQuestionGQL,
+  listenResult,
 }

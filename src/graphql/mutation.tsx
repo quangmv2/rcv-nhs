@@ -148,6 +148,23 @@ mutation changePassword($input: String, $id_user: String){
 }
 `
 
+
+const resultGQL = gql`
+mutation queryResult($id_contest: String){
+  result(id_contest: $id_contest){
+    user {
+      id
+      username
+      firstname
+      dv
+      image
+    }
+    correct
+    reject
+  }
+}
+`
+
 export {
   loginMutation,
   user,
@@ -161,5 +178,6 @@ export {
   chooseAnswer,
   getContest,
   createUser,
-  changePasswordGQL
+  changePasswordGQL,
+  resultGQL
 }

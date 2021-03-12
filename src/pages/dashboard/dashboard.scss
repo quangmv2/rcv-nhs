@@ -1,10 +1,14 @@
-.container > header {
+.container-rank {
+    min-height: 100vh;
+}
+
+.container-rank > header {
 	margin: 0 auto;
 	padding: 1em;
 	text-align: center;
 }
 
-.container > header h1 {
+.container-rank > header h1 {
   font-weight: 600;
 	font-size: 3em;
 	margin: 0;

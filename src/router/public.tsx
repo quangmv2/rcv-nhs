@@ -81,8 +81,8 @@ const PublicLayout = ({
                                 )
                         }
 
-                        <Menu.Item key="/dashboard">
-                            <Link to="/dashboard">Dashboard</Link>
+                        <Menu.Item key="/dashboards">
+                            <Link to="/dashboards">Dashboard</Link>
                         </Menu.Item>
                         {
                             auth && auth.user && _.indexOf(["SUPER_ADMIN", "ADMIN"], auth.user.idRole) > -1 &&
