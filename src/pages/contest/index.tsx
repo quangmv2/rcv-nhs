@@ -12,7 +12,7 @@ const Home = () => {
                 <Question question='hello' />
                 <Answer />
             </div>  </Col>
-            <Col span={4}><Counter /></Col>
+            <Col span={4} className='counter'><Counter /></Col>
 
         </Row>
 

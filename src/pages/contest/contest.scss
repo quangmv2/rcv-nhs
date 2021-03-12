@@ -7,32 +7,40 @@
 }
 .question-container {
     margin: 0;
-    position: relative;
     display: flex;
     flex-grow: 3.5;
     align-items: center;
     justify-content: center;
 }
+
 .question-content {
-     color: black;
+     color: white;
+     font-size: x-large;
+     font-weight: bold;
+     padding-top: 30px;
+     >span {
+         
+        
+     }
     
 
 }
 .question-text {
    color: white;
-
 }
-
-
 .question {
-  margin: 0;
   width: 80%;
-  position: relative;
   text-align: center;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #3186b4;
+  border-radius: 20px;
   height: 200px;
-
+ 
+  >span {
+     
+      font-weight: bold;
+      color: white;
+  }
+  
 }
 .question-number {
     position: relative;
@@ -49,6 +57,29 @@
     text-transform: uppercase;
 
 }
+.plan-title {
+    position: relative;
+    top: 0;
+    font-weight: 800;
+    padding: 5px 15px;
+    margin: 0 auto;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin: 0;
+    display: inline-block;
+    background-color: #222f3d;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+.plan {
+    margin: 0;
+    width: 25%;
+    position: relative;
+    float: left;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  } 
 
 .answer-container {
     flex-grow: 2;
@@ -67,11 +98,13 @@
     height: 70px;
     border-radius: 20px;
     display: flex;
-    justify-content: flex-start;
-    float: left;
     flex-direction: row;
     align-items: center;
+    text-transform: capitalize;
+    font-weight: bold;
+   
     > div  {
+        flex-grow: 0.5;
         text-align: center;
         >span {
         background-color:  #87bdd7;
@@ -79,12 +112,16 @@
             color: #2875a9;
             font-size: 30px;
             padding: 2px 10px;
-            font-weight: bold;
+           
            
         }
     }
     >p {
-        text-align: center;
+        flex-grow: 8;
+        text-align: left;
+        color: white;
+        font-size: 20px;
+        margin: auto;
     }
    
     
@@ -132,10 +169,36 @@ h2 {
         font-weight: 400;
     }
 }
+.timer-container {
+    background-color: #040f2b;
+    color: white;
+    width: 140px;
+    height: 140px;
+    border-radius: 7px;
+    text-align: center;
+    text-transform: capitalize;
+    >p {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+    ;
+}
+.counter {
+    margin-top: 160px;
+}
+.number {
+    color: #fff;
+    font-weight: bold;
+    font: 300 2.25em $lato;
+    font-size: 100px;
+    text-transform: uppercase;
+   
+}
+
+
 
 // Countdown
 .countdown {
-    width: 720px;
     margin: 0 auto;
 
     .bloc-time {

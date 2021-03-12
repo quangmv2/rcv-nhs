@@ -12,8 +12,9 @@ const Answer = () => {
             return (
                 <Col span={12} className='answer-contain'>
                 <div className='each-answer-container'> 
-                <div> <span>{index}</span></div>
-               
+                <div>
+                <span >{index}</span>
+                </div>
                 <p>ans</p>
                 </div>
             </Col>
