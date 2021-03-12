@@ -185,6 +185,10 @@ h2 {
 }
 .counter {
     margin-top: 160px;
+    >p {
+        color: #040f2b;
+        font-weight: bold;
+    }
 }
 .number {
     color: #fff;
