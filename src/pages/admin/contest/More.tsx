@@ -77,7 +77,7 @@ const columns = [
         title: 'Check',
         dataIndex: '',
         key: 'started',
-        render: (user: any) => <JoinContest checkProp={user.check} id_contest={user.id_contest} id_user={user.id} />
+        render: (user: any) => <JoinContest key={`join ${user.id}`} checkProp={user.check} id_contest={user.id_contest} id_user={user.id} />
     },
 ];
 

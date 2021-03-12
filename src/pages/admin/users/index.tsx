@@ -7,7 +7,7 @@ import { useQuery } from "@apollo/client";
 import More from "./More";
 
 
-const revertDV = (dv: any) => {
+export const revertDV = (dv: any) => {
     switch (dv) {
         case "pkm":
             return "Phường Khuê Mỹ"
@@ -81,7 +81,7 @@ const Home = () => {
             dataIndex: 'id',
             key: 'x',
             render: (id: any) => <>
-              <More id={id}></More>
+              <More id={id} refetch={refetch}></More>
             </>,
           }
 
@@ -92,8 +92,6 @@ const Home = () => {
             <Col xs={{ span: 6 }} lg={{ span: 6 }} md={{ span: 24 }}>  
             <UserForm refetch={refetch} />
             </Col>
-
-
         </Row>
     )
 }

@@ -89,6 +89,7 @@ subscription listenResult($id_contest: String){
       id
       username
       firstname
+      lastname
       dv
       image
     }

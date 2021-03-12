@@ -156,11 +156,19 @@ mutation queryResult($id_contest: String){
       id
       username
       firstname
+      lastname
       dv
       image
     }
     correct
     reject
+  }
+}
+`
+const removeUser = gql`
+mutation removeUser($input: String){
+  removeUser(input: $input) {
+    id
   }
 }
 `
@@ -179,5 +187,6 @@ export {
   getContest,
   createUser,
   changePasswordGQL,
-  resultGQL
+  resultGQL,
+  removeUser
 }

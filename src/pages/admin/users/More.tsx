@@ -1,19 +1,22 @@
 import React, { FunctionComponent, useState } from "react";
-import { UserOutlined } from "@ant-design/icons";
+import { ExclamationCircleOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Form, Input, Menu, message, Modal } from "antd";
 import { useMutation } from "@apollo/client";
-import { changePasswordGQL } from "../../../graphql";
+import { changePasswordGQL, removeUser } from "../../../graphql";
 
 type Props = {
-    id: string
+    id: string,
+    refetch?: Function
 }
 
 const More: FunctionComponent<Props> = ({
-    id
+    id,
+    refetch
 }) => {
 
     const [visible, setVisible] = useState<boolean>(false);
     const [change, { loading }] = useMutation(changePasswordGQL)
+    const [ remove ] = useMutation(removeUser);
 
     const changePassword = () => {
         setVisible(true)
@@ -42,6 +45,24 @@ const More: FunctionComponent<Props> = ({
         })
     }
 
+    const onRemove = () => {
+        Modal.confirm({
+            title: 'Confirm',
+            icon: <ExclamationCircleOutlined />,
+            content: 'Confirm',
+            okText: 'Xóa',
+            cancelText: 'Hủy',
+            onOk: () => remove({
+                variables: {
+                    input: id
+                }
+            }).then(() => {
+                refetch && refetch()
+                message.success("success")
+            }).catch(err => message.error("error"))
+        });
+    }
+
     const menu = (
         <Menu>
             <Menu.Item key="1" icon={<UserOutlined />}
@@ -54,7 +75,9 @@ const More: FunctionComponent<Props> = ({
             </Menu.Item>
             <Menu.Item key="3" icon={<UserOutlined />} style={{
                 color: "red"
-            }}>
+            }}
+                onClick={onRemove}
+            >
                 Remove
             </Menu.Item>
         </Menu>
