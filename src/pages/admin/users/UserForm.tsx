@@ -5,7 +5,7 @@ import axios from "axios";
 import { useMutation } from "@apollo/client";
 import { createUser } from "../../../graphql";
 
-export const HOST = '/'
+export const HOST = ''
 
 const { Option } = Select
 
