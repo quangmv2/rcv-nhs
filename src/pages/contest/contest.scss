@@ -106,7 +106,7 @@ height: 300px;
   text-transform: capitalize;
   font-weight: bold;
  
-  > div  {
+  .index  {
       flex-grow: 0.5;
       text-align: center;
       >span {
@@ -119,12 +119,13 @@ height: 300px;
          
       }
   }
-  >p {
+  .answer {
       flex-grow: 8;
       text-align: left;
       color: white;
       font-size: 20px;
       margin: auto;
+      margin-left: 10px;
   }
  
   

@@ -86,6 +86,9 @@ const Home = () => {
                 break;
             case EnumListenContest.END:
                 message.success("Cuộc thi đã kết thúc. Mời bạn xem kết quả tại trang chính")
+                setTimeout(() => {
+                    history.push(`/dashboard/${id}`)
+                }, 3000);
                 break;
             default:
                 break;

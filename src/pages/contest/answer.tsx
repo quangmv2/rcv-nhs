@@ -105,10 +105,12 @@ const Answer: FunctionComponent<Props> = ({
                         style={correct == index + 1 ? styleCorrect :
                             (answering == index + 1 && correct && answering && correct != answering ? styleInCorrect : (answering == index + 1 ? styleChoose : {}))}
                     >
-                        <div>
+                        <div className="index">
                             <span >{renderIndex(index)}</span>
                         </div>
-                        <p>{ans}</p>
+                        <div className="answer">
+                            <p>{ans}</p>
+                        </div>
                     </div>
                 </Col>
 
