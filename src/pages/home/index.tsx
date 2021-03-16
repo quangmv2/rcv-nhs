@@ -82,7 +82,7 @@ const Home = () => {
                                     </td>
                                     <td>
                                         {
-                                            auth.user.firstname
+                                            auth.user.email
                                         }
                                     </td>
                                 </tr>
